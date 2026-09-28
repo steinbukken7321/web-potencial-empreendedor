@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Escala de Potencial Empreendedor
 
 Aplicação web interativa desenvolvida com **HTML5**, **Tailwind CSS**, **JavaScript** e **Chart.js**, baseada na metodologia oficial da *Escala de Potencial Empreendedor*. O sistema permite que o usuário realize reflexões individuais, responda ao questionário estruturado em blocos analíticos e visualize comparativos de desempenho através de gráficos de radar em tempo real.
@@ -28,3 +29,7 @@ Como o projeto é desenvolvido puramente com tecnologias web frontend (HTML/CSS/
 1. Clone este repositório ou faça o download dos arquivos:
    ```bash
    git clone [https://github.com/SEU-USUARIO/escala-potencial-empreendedor.git](https://github.com/SEU-USUARIO/escala-potencial-empreendedor.git)
+=======
+# escala-potencial-empreendedor
+Aplicação web interativa baseada na Escala de Potencial Empreendedor oficial
+>>>>>>> 21d99582ab01645e3a3eccbc449f490980ae6e5b
