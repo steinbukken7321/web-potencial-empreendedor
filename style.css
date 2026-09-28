@@ -1,0 +1,23 @@
+body {
+    background-color: #f8fafc;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Caixa de texto com limite mínimo inicial, permitindo expandir apenas para baixo */
+.jornada-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    height: 500px;
+    margin: 0 auto;
+}

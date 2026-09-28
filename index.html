@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala de Potencial Empreendedor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col md:flex-row">
+
+    <aside class="w-full md:w-72 bg-white border-r border-slate-200 p-6 flex flex-col justify-between shadow-sm md:h-screen md:sticky md:top-0">
+        <div>
+            <h2 class="text-xl font-bold text-blue-900 mb-6">Potencial Empreendedor</h2>
+            <nav class="space-y-2">
+                <button onclick="mudarAba('jornada')" id="btn-jornada" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-all bg-blue-600 text-white shadow-md">
+                    Minha jornada empreendedora
+                </button>
+                <button onclick="mudarAba('questionario')" id="btn-questionario" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-all text-slate-600 hover:bg-slate-100">
+                    Questionário
+                </button>
+                <button onclick="mudarAba('resultados')" id="btn-resultados" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-all text-slate-600 hover:bg-slate-100">
+                    Resultados
+                </button>
+            </nav>
+        </div>
+        <div class="text-xs text-slate-400 mt-6 pt-4 border-t hidden md:block">
+            Escala Oficial Adaptada
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-10 max-w-5xl mx-auto overflow-y-auto">
+        
+        <div id="aba-jornada" class="space-y-8 bg-white p-8 rounded-2xl border shadow-sm">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Reflexão Individual</span>
+                <h1 class="text-3xl font-extrabold text-blue-900 mt-1 mb-6">Minha jornada empreendedora</h1>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-slate-200 p-6 rounded-2xl space-y-3 bg-slate-50/50 flex flex-col justify-between">
+                    <div>
+                        <span class="text-2xl font-bold text-blue-600">01</span>
+                        <h3 class="text-lg font-bold text-slate-800">Minha trajetória</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Quais experiências e escolhas me trouxeram até aqui?<br>
+                            Que aprendizados carrego?
+                        </p>
+                    </div>
+                    <textarea id="jornada-1" rows="3" class="w-full p-3 border rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white jornada-textarea" placeholder="Escreva suas reflexões aqui..."></textarea>
+                </div>
+
+                <div class="border border-slate-200 p-6 rounded-2xl space-y-3 bg-slate-50/50 flex flex-col justify-between">
+                    <div>
+                        <span class="text-2xl font-bold text-blue-600">02</span>
+                        <h3 class="text-lg font-bold text-slate-800">Minhas motivações</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            O que me atrai em empreender?<br>
+                            Que riscos e condições pesam nessa escolha?
+                        </p>
+                    </div>
+                    <textarea id="jornada-2" rows="3" class="w-full p-3 border rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white jornada-textarea" placeholder="Escreva suas reflexões aqui..."></textarea>
+                </div>
+
+                <div class="border border-slate-200 p-6 rounded-2xl space-y-3 bg-slate-50/50 flex flex-col justify-between">
+                    <div>
+                        <span class="text-2xl font-bold text-blue-600">03</span>
+                        <h3 class="text-lg font-bold text-slate-800">Para onde quero ir</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Que tipo de trabalho quero construir?<br>
+                            Como empreender pode me ajudar?
+                        </p>
+                    </div>
+                    <textarea id="jornada-3" rows="3" class="w-full p-3 border rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white jornada-textarea" placeholder="Escreva suas reflexões aqui..."></textarea>
+                </div>
+
+                <div class="border border-emerald-200 p-6 rounded-2xl space-y-3 bg-emerald-50/40 flex flex-col justify-between">
+                    <div>
+                        <span class="text-2xl font-bold text-emerald-600">04</span>
+                        <h3 class="text-lg font-bold text-slate-800">Meu próximo passo</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Com quais recursos e apoios posso contar?<br>
+                            O que posso experimentar?
+                        </p>
+                    </div>
+                    <textarea id="jornada-4" rows="3" class="w-full p-3 border rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white jornada-textarea" placeholder="Escreva suas reflexões aqui..."></textarea>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center">
+                <button type="button" onclick="mudarAba('questionario')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl shadow-md transition-all">
+                    Ir para o Questionário &rarr;
+                </button>
+            </div>
+        </div>
+
+        <div id="aba-questionario" class="hidden space-y-8">
+            <header class="text-center mb-8 border-b pb-6 bg-white p-6 rounded-2xl shadow-sm">
+                <h1 class="text-3xl font-bold text-blue-900">Escala de Potencial Empreendedor</h1>
+            </header>
+
+            <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-6 text-slate-700 leading-relaxed">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-900 mb-2">Comentários iniciais</h2>
+                    <p>Este questionário é composto de duas partes: intenção de empreender e escala de potencial empreendedor propriamente dita. A primeira parte destina-se àqueles que têm o propósito de em algum momento iniciar ou adquirir um negócio. A segunda parte contempla os primeiros e àqueles que mesmo não possuindo o desejo de iniciar um negócio próprio apresentem características empreendedoras que possam ser úteis na atividade que exercem. Os primeiros aqui serão classificados como empreendedores e os segundos como intraempreendedores.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">Recomendações</h3>
+                    <p>Antes de iniciar pense sobre as suas aspirações, desejos etc. sobre o seu futuro. Como pretende enfrentar os obstáculos pela sobrevivência.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">Instruções para um preenchimento correto</h3>
+                    <p>Este questionário tem como objetivo de identificar qual é o seu potencial para tornar-se empreendedor. Para tanto o resultado obtido por você, respondendo as questões que se seguem, será comparado com os resultados alcançados por empreendedores que já suplantaram a barreira dos cinco anos com suas empresas funcionando. O questionário foi montado utilizando um diálogo entre dois amigos e uma série de frases. Por favor, não deixe nenhuma frase sem resposta. Não existem situações certas ou erradas. A sua resposta deve refletir o seu comportamento, ou seja, a forma como você entende as coisas, age ou agiria em determinadas circunstâncias. Em caso de dúvida, opte pela opção que mais se aproxima de sua maneira de ser. Cada frase oferece um leque de possibilidades que vão de 0 (zero) a 10 (dez). O 0 (zero) significa que você discorda totalmente do enunciado da frase e o 10 (dez) que você concorda totalmente. Entre esses números, qualquer valor intermediário poderá ser o da sua escolha e representar como você pensa, age ou agiria. Para ajudá-lo, em sua decisão, mostra-se a seguir a escala em forma de régua.</p>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl my-6 space-y-4">
+                    <h4 class="font-bold text-slate-800 text-center text-sm uppercase tracking-wider">Escala de Pontuação (Régua)</h4>
+                    <div class="grid grid-cols-5 text-center text-xs font-bold text-slate-600 border-b pb-2">
+                        <div>Discordo Totalmente<br><span class="text-slate-400 font-normal">(sem chance)</span></div>
+                        <div>Discordo</div>
+                        <div>Neutro</div>
+                        <div>Concordo</div>
+                        <div>Concordo Totalmente<br><span class="text-slate-400 font-normal">(certeza absoluta)</span></div>
+                    </div>
+                    <div class="flex justify-between items-center px-2 pt-2 font-mono text-sm text-blue-900 font-bold">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                    </div>
+                    <div class="w-full bg-slate-200 h-2 rounded-full relative flex justify-between px-1">
+                        <div class="w-0.5 h-4 bg-slate-400 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-4 bg-slate-400 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-3 bg-slate-300 -top-1 relative"></div>
+                        <div class="w-0.5 h-4 bg-slate-400 -top-1 relative"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic text-center mt-2">Dá-se a seguir um exemplo prático para melhor entendimento. Na afirmação "Gosto de realizar coisas novas", se você discordar, porém com pouca intensidade, a escolha poderá ser 4 ou 4,5, o que representará só 40% ou 45% de chances de haver interesse de sua parte em realizar coisas novas.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-xl space-y-4">
+                    <p class="font-bold text-blue-900">Vamos ao diálogo entre os dois amigos.</p>
+                    <p class="italic text-blue-900">Antônio tem um sonho: tornar-se dono do seu próprio nariz, ou seja, em vez de trabalhar para outra pessoa, trabalhar para ele mesmo. Sempre que Antônio conversa com seus amigos ele diz: <br>— Um dia, se Deus quiser, vou trabalhar para mim mesmo e não vou mais aturar ordens de ninguém!</p>
+                    <p class="italic text-blue-900">Joaquim, o melhor amigo de Antônio e há algum tempo dono do seu próprio negócio, pergunta sempre: <br>— Antônio, o que você já fez para alcançar esse objetivo? Já marcou uma data para deixar o emprego, já definiu o tipo de coisa que vai fazer?</p>
+                    <p class="italic text-blue-900">— Não, mas um dia eu chegarei lá! — diz Antônio, demonstrando segurança.</p>
+                </div>
+            </div>
+
+            <form id="empreendedorForm" class="space-y-8">
+                
+                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
+                    <h2 class="text-xl font-bold text-blue-900 border-b pb-2">Parte 1: Intenção de Empreender</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Agora, pense em você. Existe alguma semelhança ou você difere de Antônio? Atribua um valor, às frases a seguir, colocando a sua opinião, em forma de concordância ou discordância, de acordo com a escala apresentada anteriormente.
+                    </p>
+                    <div id="bloco-intencao" class="space-y-4"></div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4 text-slate-700 leading-relaxed">
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-xl space-y-4">
+                        <p class="italic text-blue-900">Certo dia Joaquim se encontra com Antônio e dispara: <br>— E aí, continua com aquela idéia de abrir um negócio?</p>
+                        <p class="italic text-blue-900">— Claro você me conhece! — responde Antônio. — Eu sou persistente, duro na queda. Quando caio me levanto e vou em frente. Mas, nesse caso é preciso ir devagar, com cautela. Não adianta correr, pôr o carro na frente dos bois.</p>
+                        <p class="italic text-blue-900">— Sei disso muito bem! — retruca Joaquim. <br>— Eu gosto das coisas bem feitas. Por isso ainda não comecei. Mas isso não importa, eu não sou apressado. Para mim só interessa a definição de que vou abrir um negócio. O momento certo será quando eu encontrar uma oportunidade que me leve a acreditar que terei sucesso. No momento estou alerta, buscando oportunidades. Quando surgir aquela que eu considere a certa, acredito eu, então será hora de começar — diz Antônio.</p>
+                    </div>
+                    <p class="text-sm font-medium text-slate-600">Pense em você. Será que seus pensamentos, aspirações, ações, são semelhantes aos de Antônio, ou diferem? Posicione-se, valorando em termos de concordância/discordância, ao pontuar as frases a seguir.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
+                    <h2 class="text-xl font-bold text-blue-900 border-b pb-2">Escala de Potencial Empreendedor (Oportunidade e Persistência)</h2>
+                    <div id="bloco-escala-1" class="space-y-4"></div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4 text-slate-700 leading-relaxed">
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-xl space-y-4">
+                        <p class="italic text-blue-900">Joaquim se interessa pelo assunto e continua: <br>— Essas coisas são muito próprias de você. Eu te conheço. Você é aquele tipo de pessoa que, para fazer as coisas, primeiro tem que se informar bem, aprender, planejar como fazer, definir aonde pretende chegar, quanto vai ganhar.</p>
+                        <p class="italic text-blue-900">— Isso mesmo! — diz Antônio. — Você também é assim! Eu gosto de fazer as coisas, como se diz, bem arrumadinhas.</p>
+                        <p class="italic text-blue-900">— É verdade! — retruca Joaquim. — Eu, assim como você, gosto de fazer as coisas planejadas, controladas. Acredito, embora não saiba se estou certo ou errado, que as coisas têm que ser assim.</p>
+                    </div>
+                    <p class="text-sm font-medium text-slate-600">Você pensa igual a Antônio e Joaquim, ou é diferente deles? Nas frases a seguir atribua um valor ao seu grau de concordância/discordância com o enunciado. Lembre-se, quanto mais próximo de 0 (zero) maior a discordância e quanto mais próximo de 10 (dez) maior a concordância.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
+                    <h2 class="text-xl font-bold text-blue-900 border-b pb-2">Escala de Potencial Empreendedor (Informações, Planejamento, Metas, Controle)</h2>
+                    <div id="bloco-escala-2" class="space-y-4"></div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4 text-slate-700 leading-relaxed">
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-xl space-y-4">
+                        <p class="italic text-blue-900">— Uma coisa que eu ainda não tenho, e você já conseguiu montar — diz Antônio — é uma boa rede de relacionamentos.</p>
+                        <p class="italic text-blue-900">— Quanto a isso não se preocupe! — retruca Joaquim. — Você tem qualidades! Em minha opinião sua capacidade de convencer as pessoas é boa, você se entrosa fácil, e quanto à rede de relacionamentos eu discordo de sua auto-avaliação. Chego até a pensar que ela é melhor do que a minha — finaliza Joaquim.</p>
+                        <p class="italic text-blue-900">— Bondade sua! — diz Antônio, enquanto tenta disfarçar um sorriso de satisfação. <br>— Vá em frente, Antônio! Eu acredito em você! — encerrando a conversa e despedindo-se.</p>
+                    </div>
+                    <p class="text-sm font-medium text-slate-600">Antônio e Joaquim têm essas características. Em que grau você acha que as possui? Leia as frases a seguir e coloque, dentro dos colchetes, o valor, na escala de 0 a 10, que representa o seu grau de concordância/discordância com o enunciado da frase.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
+                    <h2 class="text-xl font-bold text-blue-900 border-b pb-2">Escala de Potencial Empreendedor (Persuasão e Rede de Relações)</h2>
+                    <div id="bloco-escala-3" class="space-y-4"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
+                    <h2 class="text-xl font-bold text-blue-900 border-b pb-2">Identificação do Participante</h2>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Nome:</label>
+                            <input type="text" id="part-nome" class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Seu nome completo">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Sexo:</label>
+                            <div class="flex items-center gap-6 mt-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="sexo" value="Masculino" class="text-blue-600"> Masculino
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="sexo" value="Feminino" class="text-blue-600"> Feminino
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Data de nascimento:</label>
+                            <input type="date" id="part-nascimento" class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="pt-4 text-xs text-slate-500 border-t italic">
+                        PASSE ÀS PÁGINAS SEGUINTES PARA CALCULAR O SEU GRAU DE POTENCIAL EMPREENDEDOR, COMPARÁ-LO COM OS RESULTADOS DE UMA AMOSTRA DE EMPREENDEDORES DE SUCESSO E VERIFICAR O SEU GRÁFICO DE DISTRIBUIÇÃO DE ESCORES POR CADA CARACTERÍSTICA QUE AJUDOU A FORMAR O SEU PERFIL.
+                    </div>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button type="button" onclick="irParaResultados()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-xl shadow-lg transition-all duration-200 text-lg">
+                        Calcular e Ver Resultados &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="aba-resultados" class="hidden space-y-8 bg-white p-8 rounded-2xl border shadow-md">
+            <div class="flex justify-between items-center border-b pb-4">
+                <h2 class="text-3xl font-extrabold text-blue-900">Resultados e Comparação</h2>
+                <button type="button" onclick="voltarQuestionario()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-xl text-sm">
+                    &larr; Voltar ao Questionário
+                </button>
+            </div>
+
+            <div id="resumoParticipante" class="bg-slate-50 p-4 rounded-xl text-slate-700 font-medium border"></div>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="font-bold text-xl mb-4 text-slate-700">Pontuação por Dimensão (Você / Sucesso):</h3>
+                    <ul id="listaPontuacoes" class="space-y-3 text-base"></ul>
+                </div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="border-t pt-8 mt-8 space-y-6">
+                <h3 class="text-2xl font-bold text-blue-900">Interpretação de Seus Resultados</h3>
+                <div class="space-y-6 text-slate-700 leading-relaxed text-sm md:text-base">
+                    <p>Muito bem. Agora que você tem os seus resultados é necessário interpretá-los. Não fique desapontado se eles ficaram muito distantes dos empreendedores que ultrapassaram a barreira dos 5 anos. Você pode chegar lá também através de treinamentos e dedicação.</p>
+                    
+                    <ul class="space-y-3">
+                        <li><strong>Intenção de Empreender:</strong> Prenunciar a intenção de possuir ou adquirir um negócio próprio.</li>
+                        <li><strong>Oportunidade:</strong> Estar atento ao que acontece à volta, identificando necessidades e aproveitando situações incomuns.</li>
+                        <li><strong>Persistência:</strong> Capacidade de manter-se firme na busca do sucesso, superando obstáculos e redefinindo estratégias.</li>
+                        <li><strong>Eficiência:</strong> Fazer as coisas de maneira correta, adaptando-se a mudanças e garantindo prazos.</li>
+                        <li><strong>Informações:</strong> Disponibilidade para aprender, sede de conhecimentos e interesse em buscar ajuda de especialistas.</li>
+                        <li><strong>Planejamento:</strong> Capacidade de planejar detalhando tarefas.</li>
+                        <li><strong>Metas:</strong> Determinação e senso de direção para estabelecer objetivos claros e mensuráveis.</li>
+                        <li><strong>Controle:</strong> Acompanhar a execução dos planos e manter registros.</li>
+                        <li><strong>Persuasão:</strong> Habilidade para influenciar, convencer e motivar pessoas.</li>
+                        <li><strong>Rede de Relações:</strong> Capacidade de estabelecer e manter uma rede de contatos sólida.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
